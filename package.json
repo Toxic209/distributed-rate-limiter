@@ -1,0 +1,25 @@
+{
+  "name": "distributed-limiter",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Toxic209/distributed-rate-limiter#readme",
+  "bugs": {
+    "url": "https://github.com/Toxic209/distributed-rate-limiter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Toxic209/distributed-rate-limiter.git"
+  },
+  "license": "ISC",
+  "author": "rohit pandey",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
