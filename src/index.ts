@@ -3,6 +3,8 @@ dotenv.config({
     path: "./.env"
 })
 import fastify from "./fastify.js"
+import fs from "fs"
+import path from "path"
 
 
 const port = parseInt(process.env.PORT || "4001", 10)
