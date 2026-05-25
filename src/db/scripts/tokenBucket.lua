@@ -1,9 +1,9 @@
-local key = KEY[1];
+local key = KEYS[1];
 
-local capacity = tonumber(ARGV(1)) or 0;
-local refillRate = tonumber(ARGV(2));
-local tokenRequest = tonumber(ARGV(3));
-local currentTime = tonumber(ARGV(4));
+local capacity = tonumber(ARGV[1]) or 0;
+local refillRate = tonumber(ARGV[2]);
+local tokenRequest = tonumber(ARGV[3]);
+local currentTime = tonumber(ARGV[4]);
 
 --get bucket from redis
 local bucket = redis.call(

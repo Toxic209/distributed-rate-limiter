@@ -11,8 +11,10 @@ type BucketOptions = {
     tokenRequest: number
 }
 
-export async function TokenBucket({ key, capacity, refillRate, tokenRequest }: BucketOptions) {
+export async function TokenBucket({ key, capacity, refillRate, tokenRequest }: BucketOptions): Promise<Boolean> {
+
     const currentTime = Date.now();
+
     const result = await redisClient.eval(
         tokenBucketLua,
         1,

@@ -10,7 +10,7 @@ class Limiter{
 
     constructor(private redis: Redis, private capacity: number, private refillRate: number){}
 
-    async isAllowed({key, tokenRequest}: RateLimiterOptions){
+    async isAllowed({key, tokenRequest}: RateLimiterOptions): Promise<Boolean>{
         
         //prepare arguments
         const args = {
