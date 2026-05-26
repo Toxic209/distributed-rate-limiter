@@ -16,6 +16,6 @@ export default async function RateLimiter(fastify: FastifyInstance){
             tokenRequest: reqData.tokenRequest 
         });
 
-        return { allowed }
+        return allowed 
     });
 }

@@ -15,15 +15,36 @@ export async function TokenBucket({ key, capacity, refillRate, tokenRequest }: B
 
     const currentTime = Date.now();
 
-    const result = await redisClient.eval(
-        tokenBucketLua,
-        1,
-        key,
-        capacity,
-        refillRate,
-        tokenRequest,
-        currentTime
-    );
+    const sha = await redisClient.script("LOAD", tokenBucketLua) as string;
 
-    return result === 1;
+    try {
+        const result = await redisClient.evalsha(
+            sha,
+            1,
+            key,
+            capacity,
+            refillRate,
+            tokenRequest,
+            currentTime
+        );
+    
+        return result === 1;
+        
+    } catch (error) {
+        if (error instanceof Error && error.message.includes("NOSCRIPT")) {
+            const result = await redisClient.eval(
+                tokenBucketLua,
+                1,
+                key,
+                capacity,
+                refillRate,
+                tokenRequest,
+                currentTime
+            );
+        
+            return result === 1;
+        }
+
+        throw Error;
+    }
 }

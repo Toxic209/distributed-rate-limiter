@@ -45,4 +45,9 @@ redis.call(
     currentTime
 )
 --set redis expire
+redis.call(
+    "EXPIRE",
+    key,
+    3600
+)
 return 1
