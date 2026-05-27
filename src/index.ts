@@ -1,24 +1,6 @@
-import dotenv from "dotenv"
-dotenv.config({
-    path: "./.env"
-})
-import fastify from "./fastify.js"
-import fs from "fs"
-import path from "path"
+import { Limiter } from "./core/LimiterEngine.js";
+import type { RateLimiterOptions } from "./core/LimiterEngine.js";
+import type { BucketOptions } from "./core/TokenBucket.js";
 
-
-const port = parseInt(process.env.PORT || "4001", 10)
-
-//connect cleanly
-function startServer() {
-    try {
-        fastify.listen({ port: port }, () => {
-            console.log(`Serving at ${port}`);
-        })
-    } catch (error) {
-        fastify.log.error(error);
-        process.exit(1);
-    }
-}
-
-startServer();
+export { Limiter }
+export type { RateLimiterOptions, BucketOptions }

@@ -1,12 +1,12 @@
 import type { Redis } from "ioredis";
 import { TokenBucket } from "./TokenBucket.js";
 
-type RateLimiterOptions = {
+export type RateLimiterOptions = {
     key: string,
     tokenRequest: number
 }
 
-class Limiter{
+export class Limiter{
 
     constructor(private redis: Redis, private capacity: number, private refillRate: number){}
 
@@ -21,11 +21,9 @@ class Limiter{
         }
         
         //call bucket execution
-        const redisResponse = await TokenBucket(args);;
+        const redisResponse = await TokenBucket(this.redis, args);;
 
         //return decision
         return redisResponse
     }
 }
-
-export default Limiter

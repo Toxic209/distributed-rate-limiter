@@ -1,24 +1,24 @@
 import fs from "fs"
-import { redisClient } from "../db/RedisClient.js"
+import type { Redis } from "ioredis";
 import path from "path"
 
 const tokenBucketLua = fs.readFileSync(path.join(import.meta.dirname, "../db/scripts/tokenBucket.lua"), "utf-8");
 
-type BucketOptions = {
+export type BucketOptions = {
     key: string,
     capacity: number,
     refillRate: number,
     tokenRequest: number
 }
 
-export async function TokenBucket({ key, capacity, refillRate, tokenRequest }: BucketOptions): Promise<Boolean> {
+export async function TokenBucket(redis: Redis, { key, capacity, refillRate, tokenRequest }: BucketOptions): Promise<Boolean> {
 
     const currentTime = Date.now();
 
-    const sha = await redisClient.script("LOAD", tokenBucketLua) as string;
+    const sha = await redis.script("LOAD", tokenBucketLua) as string;
 
     try {
-        const result = await redisClient.evalsha(
+        const result = await redis.evalsha(
             sha,
             1,
             key,
@@ -32,7 +32,7 @@ export async function TokenBucket({ key, capacity, refillRate, tokenRequest }: B
         
     } catch (error) {
         if (error instanceof Error && error.message.includes("NOSCRIPT")) {
-            const result = await redisClient.eval(
+            const result = await redis.eval(
                 tokenBucketLua,
                 1,
                 key,
