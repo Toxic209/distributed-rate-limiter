@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Toxic209/distributed-rate-limiter.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "rohit pandey",
   "type": "module",
   "main": "index.js",
