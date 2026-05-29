@@ -1,7 +1,7 @@
 {
-  "name": "distributed-limiter",
+  "name": "token-bucket-limiter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Distributed token bucket rate limiter using Redis and Lua",
   "homepage": "https://github.com/Toxic209/distributed-rate-limiter#readme",
   "bugs": {
     "url": "https://github.com/Toxic209/distributed-rate-limiter/issues"
@@ -16,19 +16,30 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec tsx src/index.ts",
-    "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "tsup src/index.ts --format esm --dts"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
+    "ioredis": "^5.10.1",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
+    "tsup": "^8.5.1",
     "tsx": "^4.22.3",
     "typescript": "^6.0.3"
   },
-  "dependencies": {
-    "dotenv": "^17.4.2",
-    "fastify": "^5.8.5",
-    "ioredis": "^5.10.1"
-  }
+  "peerDependencies": {
+    "ioredis": "^5.0.0"
+  },
+
+  "files": [
+    "dist",
+    "db"
+  ],
+
+  "keywords": [
+    "rate-limiter",
+    "redis",
+    "token-bucket",
+    "distributed-systems"
+  ]
 }

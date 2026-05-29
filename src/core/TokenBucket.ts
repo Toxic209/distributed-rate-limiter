@@ -1,15 +1,10 @@
-import fs from "fs"
 import type { Redis } from "ioredis";
-import path from "path"
+import type { BucketOptions } from "../index.js";
+import { bucketLua } from "../db/scripts/tokenBucket.js";
 
-const tokenBucketLua = fs.readFileSync(path.join(import.meta.dirname, "../db/scripts/tokenBucket.lua"), "utf-8");
+const tokenBucketLua = bucketLua;
 
-export type BucketOptions = {
-    key: string,
-    capacity: number,
-    refillRate: number,
-    tokenRequest: number
-}
+
 
 export async function TokenBucket(redis: Redis, { key, capacity, refillRate, tokenRequest }: BucketOptions): Promise<Boolean> {
 

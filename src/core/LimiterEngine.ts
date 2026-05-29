@@ -1,10 +1,7 @@
 import type { Redis } from "ioredis";
 import { TokenBucket } from "./TokenBucket.js";
+import type { RateLimiterOptions } from "./types.js";
 
-export type RateLimiterOptions = {
-    key: string,
-    tokenRequest: number
-}
 
 export class Limiter{
 
