@@ -1,5 +1,5 @@
 {
-  "name": "token-bucket-limiter",
+  "name": "distributed-limiter",
   "version": "1.0.0",
   "description": "Distributed token bucket rate limiter using Redis and Lua",
   "homepage": "https://github.com/Toxic209/distributed-rate-limiter#readme",

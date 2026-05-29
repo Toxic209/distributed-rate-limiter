@@ -3,7 +3,7 @@ import { TokenBucket } from "./TokenBucket.js";
 import type { RateLimiterOptions } from "./types.js";
 
 
-export class Limiter{
+export class TokenBucketLimiter{
 
     constructor(private redis: Redis, private capacity: number, private refillRate: number){}
 

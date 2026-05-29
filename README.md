@@ -1,4 +1,4 @@
-# bucket-limiter
+# distributed-limiter
 
   
 
@@ -30,7 +30,7 @@ A high-performance distributed rate limiter based on the Token Bucket algorithm,
 
 ```bash
 
-npm  install  token-bucket-limiter
+npm  install  distributed-limiter
 
 ```
 
@@ -42,11 +42,11 @@ npm  install  token-bucket-limiter
 
 ```ts
 
-import { Limiter } from  "token-bucket-limiter";
+import { TokenBucketLimiter } from  "distributed-limiter";
 
   
 
-const limiter =  new  Limiter({
+const limiter =  new  TokenBucketLimiter({
 
 redis,
 capacity,
@@ -84,7 +84,7 @@ console.log("Rate limit exceeded");
 
   
 
-### `new Limiter(options)`
+### `new TokenBucketLimiter(options)`
 
   
 
@@ -94,7 +94,7 @@ Creates a new limiter instance.
 
 ```ts
 
-const limiter =  new  Limiter({
+const limiter =  new  TokenBucketLimiter({
 
 redis,
 limiterCapacity,
