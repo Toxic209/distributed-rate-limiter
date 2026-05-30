@@ -1,6 +1,6 @@
 {
   "name": "distributed-limiter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Distributed token bucket rate limiter using Redis and Lua",
   "homepage": "https://github.com/Toxic209/distributed-rate-limiter#readme",
   "bugs": {
@@ -11,9 +11,16 @@
     "url": "git+https://github.com/Toxic209/distributed-rate-limiter.git"
   },
   "license": "MIT",
-  "author": "rohit pandey",
+  "author": "Rohit Pandey",
   "type": "module",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec tsx src/index.ts",
     "build": "tsup src/index.ts --format esm --dts"
@@ -32,7 +39,8 @@
   },
   "files": [
     "dist",
-    "db"
+    "README.md",
+    "LICENSE"
   ],
   "keywords": [
     "rate-limiter",
