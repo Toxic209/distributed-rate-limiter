@@ -1,6 +1,6 @@
 {
   "name": "distributed-limiter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Distributed token bucket rate limiter using Redis and Lua",
   "homepage": "https://github.com/Toxic209/distributed-rate-limiter#readme",
   "bugs": {
@@ -30,12 +30,10 @@
   "peerDependencies": {
     "ioredis": "^5.0.0"
   },
-
   "files": [
     "dist",
     "db"
   ],
-
   "keywords": [
     "rate-limiter",
     "redis",
