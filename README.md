@@ -157,6 +157,7 @@ allowed: boolean;
   
 
 ## Architecture
+![Diagram](/assets//Rate%20Limiter%20Architecture.png)
 
 ```text
 
